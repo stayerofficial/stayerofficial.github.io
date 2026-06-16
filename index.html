@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STAYER | Official</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Helvetica Neue', Arial, sans-serif; }
+        ::-webkit-scrollbar { display: none; }
+        
+        html, body { background-color: #000; color: #fff; overscroll-behavior: none; -ms-overflow-style: none; scrollbar-width: none; scroll-snap-type: y mandatory; scroll-behavior: smooth; overflow-x: hidden; }
+
+        .bg-layer {
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            background-image: url('photo.png'); 
+            background-size: cover; background-position: center; z-index: 1;
+            transform: perspective(2000px) translateX(0) translateZ(0) rotateY(0);
+            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s ease;
+        }
+
+        body.nav-away .bg-layer { transform: perspective(2000px) translateX(-30vw) translateZ(-200px) rotateY(10deg); opacity: 0; }
+
+        .bottom-gradient {
+            position: fixed; bottom: 0; left: 0; width: 100%; height: 35vh; 
+            background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%);
+            z-index: 2; pointer-events: none; transition: opacity 0.8s ease;
+        }
+
+        body.nav-away .bottom-gradient { opacity: 0; }
+
+        .words-container {
+            position: fixed; bottom: 4vh; left: 50%; width: 100%; z-index: 10; text-align: center;
+            transform: perspective(2000px) translateX(-50%) translateZ(0) rotateY(0);
+            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s ease;
+            transform-style: preserve-3d;
+        }
+
+        body.nav-away .words-container { transform: perspective(2000px) translateX(calc(-50% - 50vw)) translateZ(-300px) rotateY(15deg); opacity: 0; pointer-events: none; }
+
+        .nav-word {
+            position: absolute; bottom: 0; left: 50%; font-size: 10vw; font-weight: 900;
+            text-transform: uppercase; text-decoration: none; color: #fff;
+            text-shadow: 0px 4px 25px rgba(0, 0, 0, 0.6); opacity: 0;
+            transform: translate(-50%, 50px); pointer-events: none; white-space: nowrap;
+            display: flex; align-items: center; justify-content: center; transition: color 0.3s ease;
+        }
+        
+        .nav-word:hover { color: #ccc; }
+
+        .scroll-arrow { width: 0.7em; height: 0.7em; margin-left: 15px; animation: floatDown 2s ease-in-out infinite; }
+        @keyframes floatDown { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(15px); } }
+        .scroll-section { height: 150vh; width: 100%; scroll-snap-align: start; }
+
+        .app-icon img { width: 100%; height: 100%; object-fit: cover; border-radius: 12px; }
+
+        .apps-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background-color: #000; z-index: 100; 
+            opacity: 0; transform: perspective(2000px) translateX(100vw) translateZ(-300px) rotateY(-15deg);
+            pointer-events: none; transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s ease;
+            overflow-y: auto; padding: 100px 40px 80px;
+        }
+
+        .apps-overlay.active { opacity: 1; transform: perspective(2000px) translateX(0) translateZ(0) rotateY(0); pointer-events: auto; }
+        .apps-header { position: fixed; top: 0; left: 0; width: 100%; padding: 30px 40px; display: flex; justify-content: space-between; align-items: center; z-index: 110; background: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%); }
+        .close-btn { background: none; border: none; color: #fff; font-size: 14px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; cursor: pointer; transition: color 0.3s ease; }
+        .close-btn:hover { color: #888; }
+        .page-title { font-size: 14px; font-weight: 900; letter-spacing: 2px; color: #555; text-transform: uppercase; }
+
+        .apps-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 400px)); gap: 30px; justify-content: center; max-width: 1000px; margin: 0 auto; }
+        .app-card { background-color: #050505; border: 1px solid #1a1a1a; border-radius: 16px; padding: 40px 30px; display: flex; flex-direction: column; transition: transform 0.4s ease, border-color 0.4s ease; }
+        .app-card:hover { transform: translateY(-8px); border-color: #333; }
+        .app-icon { width: 60px; height: 60px; background-color: #111; border-radius: 12px; margin-bottom: 24px; border: 1px solid #222; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+        .app-title { font-size: 24px; font-weight: 700; margin-bottom: 12px; }
+        .app-description { font-size: 15px; line-height: 1.5; color: #888; margin-bottom: 30px; flex-grow: 1; }
+        .tags { display: flex; gap: 8px; margin-bottom: 30px; flex-wrap: wrap; }
+        .tag { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; padding: 6px 10px; background-color: #111; border-radius: 4px; color: #aaa; }
+        .app-link { text-decoration: none; color: #000; background-color: #fff; padding: 14px 20px; border-radius: 8px; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; text-align: center; transition: background-color 0.3s ease; }
+        .app-link:hover { background-color: #ccc; }
+    </style>
+</head>
+<body>
+
+    <div class="bg-layer"></div>
+    <div class="bottom-gradient"></div>
+
+    <div class="words-container" id="main-words">
+        <a href="#" id="stayer-link" class="nav-word">STAYER<svg class="scroll-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
+        <a href="#" id="apps-trigger" class="nav-word">APPS</a>
+        <a href="https://instagram.com/" target="_blank" class="nav-word">INSTAGRAM</a>
+        <a href="https://youtube.com/" target="_blank" class="nav-word">YOUTUBE</a>
+    </div>
+
+    <div class="scroll-area">
+        <div class="scroll-section"></div>
+        <div class="scroll-section"></div>
+        <div class="scroll-section"></div>
+        <div class="scroll-section"></div>
+    </div>
+
+    <div class="apps-overlay" id="apps-screen">
+        <header class="apps-header">
+            <button class="close-btn" id="close-apps">← Назад</button>
+            <div class="page-title">APPS</div>
+        </header>
+
+        <div class="apps-grid">
+            <div class="app-card">
+                <div class="app-icon"><img src="health.png" alt="Health"></div>
+                <h2 class="app-title">Health Widgets</h2>
+                <p class="app-description">Unified widgets for all health applications, designed to keep your metrics at a glance in one beautiful, cohesive interface.</p>
+                <div class="tags"><span class="tag">Android</span><span class="tag">Widgets</span></div>
+                <a href="privacy-health.html" class="app-link">Privacy Policy</a>
+            </div>
+
+            <div class="app-card">
+                <div class="app-icon"><img src="anyicon.png" alt="AnyIcon"></div>
+                <h2 class="app-title">AnyIcon</h2>
+                <p class="app-description">An Android widget that allows you to customize app icons using expressive Material 3 shapes and custom designs.</p>
+                <div class="tags"><span class="tag">Android</span><span class="tag">Glance API</span></div>
+                <a href="privacy-anyicon.html" class="app-link">Privacy Policy</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const words = document.querySelectorAll('.nav-word');
+            let sectionHeight = document.querySelector('.scroll-section').offsetHeight;
+            window.addEventListener('resize', () => { sectionHeight = document.querySelector('.scroll-section').offsetHeight; updateScroll(); });
+            function updateScroll() {
+                const scrollY = window.scrollY;
+                words.forEach((word, index) => {
+                    const targetY = index * sectionHeight;
+                    const distance = scrollY - targetY;
+                    const ratio = distance / window.innerHeight;
+                    let opacity = 1 - Math.abs(ratio);
+                    opacity = Math.max(0, Math.min(1, opacity));
+                    let translateY = ratio * -50;
+                    word.style.opacity = opacity;
+                    word.style.transform = `translate(-50%, ${translateY}px)`;
+                    word.style.pointerEvents = opacity > 0.6 ? 'auto' : 'none';
+                });
+            }
+            let ticking = false;
+            window.addEventListener('scroll', () => { if (!ticking) { window.requestAnimationFrame(() => { updateScroll(); ticking = false; }); ticking = true; } });
+            updateScroll();
+            document.getElementById('stayer-link').addEventListener('click', (e) => { e.preventDefault(); window.scrollTo({ top: sectionHeight, behavior: 'smooth' }); });
+            document.getElementById('apps-trigger').addEventListener('click', (e) => { e.preventDefault(); document.getElementById('apps-screen').classList.add('active'); document.body.classList.add('nav-away'); document.body.style.overflow = 'hidden'; });
+            document.getElementById('close-apps').addEventListener('click', () => { document.getElementById('apps-screen').classList.remove('active'); document.body.classList.remove('nav-away'); setTimeout(() => { document.body.style.overflow = ''; }, 800); });
+        });
+    </script>
+</body>
+</html>
