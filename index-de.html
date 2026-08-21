@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="de" class="home">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>STAYER — Android-Apps &amp; Widgets</title>
+<meta name="description" content="STAYER entwickelt fokussierte Android-Apps und Homescreen-Widgets, darunter AnyIcon — Icon- und Widget-Anpassung im Material-3-Expressive-Stil.">
+<meta name="author" content="Maksym Duchenko">
+<meta name="theme-color" content="#000000">
+<link rel="canonical" href="https://stayerofficial.com/index-de.html">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="STAYER">
+<meta property="og:title" content="STAYER — Android-Apps &amp; Widgets">
+<meta property="og:description" content="Fokussierte Android-Apps und Homescreen-Widgets, darunter AnyIcon — Icon- und Widget-Anpassung im Material-3-Expressive-Stil.">
+<meta property="og:url" content="https://stayerofficial.com/index-de.html">
+<meta property="og:image" content="https://stayerofficial.com/assets/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="assets/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="preload" as="image" href="assets/hero-2560.jpg" media="(min-width: 800px)">
+<link rel="alternate" hreflang="en" href="https://stayerofficial.com/index.html">
+<link rel="alternate" hreflang="de" href="https://stayerofficial.com/index-de.html">
+<link rel="alternate" hreflang="x-default" href="https://stayerofficial.com/index.html">
+<link rel="stylesheet" href="assets/site.css?v=3">
+</head>
+<body>
+
+<a class="skip-link" href="#apps-trigger">Zu den Apps springen</a>
+
+<div id="page">
+  <nav class="lang-switch" aria-label="Sprache">
+    <a href="index.html" hreflang="en">EN</a><span class="sep" aria-hidden="true">/</span><a href="index-de.html" hreflang="de" aria-current="page">DE</a>
+  </nav>
+  <div class="bg-layer" role="img" aria-label="STAYER Coverbild"></div>
+  <div class="bottom-gradient"></div>
+
+  <nav class="words" id="main-words" aria-label="Hauptnavigation">
+    <a href="#apps-trigger" id="stayer-link" class="nav-word">STAYER<svg class="scroll-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
+    <a href="#apps-screen" id="apps-trigger" class="nav-word" aria-expanded="false" aria-controls="apps-screen">APPS</a>
+    <!-- TODO: echte STAYER-Profil-URLs eintragen, dann einkommentieren.
+    <a href="https://instagram.com/" class="nav-word" target="_blank" rel="noopener noreferrer">INSTAGRAM</a>
+    <a href="https://youtube.com/" class="nav-word" target="_blank" rel="noopener noreferrer">YOUTUBE</a>
+    -->
+  </nav>
+
+  <div class="site-footer-link">
+    <a href="impressum.html">Impressum</a>
+    <a href="privacy-de.html">Datenschutz</a>
+  </div>
+
+  <!-- Scroll-Strecke — wird von home.js aus der Anzahl der Menüwörter gebaut. -->
+  <div class="scroll-area" aria-hidden="true"></div>
+</div>
+
+<div class="apps-overlay" id="apps-screen" role="dialog" aria-modal="true" aria-labelledby="apps-heading" aria-hidden="true">
+  <header class="apps-header">
+    <button type="button" class="close-btn" id="close-apps">&larr; Zurück</button>
+    <p class="page-title" id="apps-heading">Apps</p>
+  </header>
+
+  <ul class="apps-grid">
+    <li class="app-card">
+      <div class="app-icon"><img src="anyicon.png" alt="" width="60" height="60" loading="lazy" decoding="async"></div>
+      <h2 class="app-title">AnyIcon</h2>
+      <p class="app-description">Ein Android-Widget, mit dem sich App-Icons in Material-3-Expressive-Formen, als Themed Icons oder mit installierten Icon-Packs neu gestalten lassen.</p>
+      <ul class="tags"><li class="tag">Android</li><li class="tag">Glance API</li></ul>
+      <div class="app-links">
+        <a href="privacy-anyicon-de.html" class="app-link">Datenschutz</a>
+        <a href="terms-anyicon-de.html" class="app-link">Nutzungsbedingungen</a>
+      </div>
+    </li>
+  </ul>
+</div>
+
+<script src="assets/home.js?v=3" defer></script>
+</body>
+</html>

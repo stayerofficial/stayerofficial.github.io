@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /privacy-health.html
+Disallow: /privacy-health-de.html
+
+Sitemap: https://stayerofficial.com/sitemap.xml

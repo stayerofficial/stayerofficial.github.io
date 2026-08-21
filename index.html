@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" class="home">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>STAYER — Android apps &amp; widgets</title>
+<meta name="description" content="STAYER builds focused Android apps and home-screen widgets, including AnyIcon — Material 3 Expressive icon and widget customisation.">
+<meta name="author" content="Maksym Duchenko">
+<meta name="theme-color" content="#000000">
+<link rel="canonical" href="https://stayerofficial.com/">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="STAYER">
+<meta property="og:title" content="STAYER — Android apps &amp; widgets">
+<meta property="og:description" content="Focused Android apps and home-screen widgets, including AnyIcon — Material 3 Expressive icon and widget customisation.">
+<meta property="og:url" content="https://stayerofficial.com/">
+<meta property="og:image" content="https://stayerofficial.com/assets/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="assets/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="preload" as="image" href="assets/hero-2560.jpg" media="(min-width: 800px)">
+<link rel="alternate" hreflang="en" href="https://stayerofficial.com/index.html">
+<link rel="alternate" hreflang="de" href="https://stayerofficial.com/index-de.html">
+<link rel="alternate" hreflang="x-default" href="https://stayerofficial.com/index.html">
+<link rel="stylesheet" href="assets/site.css?v=3">
+</head>
+<body>
+
+<a class="skip-link" href="#apps-trigger">Skip to apps</a>
+
+<div id="page">
+  <nav class="lang-switch" aria-label="Language">
+    <a href="index.html" hreflang="en" aria-current="page">EN</a><span class="sep" aria-hidden="true">/</span><a href="index-de.html" hreflang="de">DE</a>
+  </nav>
+  <div class="bg-layer" role="img" aria-label="STAYER cover artwork"></div>
+  <div class="bottom-gradient"></div>
+
+  <nav class="words" id="main-words" aria-label="Main">
+    <a href="#apps-trigger" id="stayer-link" class="nav-word">STAYER<svg class="scroll-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
+    <a href="#apps-screen" id="apps-trigger" class="nav-word" aria-expanded="false" aria-controls="apps-screen">APPS</a>
+    <!-- TODO: real STAYER profile URLs, then uncomment.
+    <a href="https://instagram.com/" class="nav-word" target="_blank" rel="noopener noreferrer">INSTAGRAM</a>
+    <a href="https://youtube.com/" class="nav-word" target="_blank" rel="noopener noreferrer">YOUTUBE</a>
+    -->
+  </nav>
+
+  <div class="site-footer-link">
+    <a href="impressum.html?lang=en">Impressum</a>
+    <a href="privacy.html">Privacy</a>
+  </div>
+
+  <!-- Scroll runway — built by home.js from the number of nav words. -->
+  <div class="scroll-area" aria-hidden="true"></div>
+</div>
+
+<div class="apps-overlay" id="apps-screen" role="dialog" aria-modal="true" aria-labelledby="apps-heading" aria-hidden="true">
+  <header class="apps-header">
+    <button type="button" class="close-btn" id="close-apps">&larr; Back</button>
+    <p class="page-title" id="apps-heading">Apps</p>
+  </header>
+
+  <ul class="apps-grid">
+    <li class="app-card">
+      <div class="app-icon"><img src="anyicon.png" alt="" width="60" height="60" loading="lazy" decoding="async"></div>
+      <h2 class="app-title">AnyIcon</h2>
+      <p class="app-description">An Android widget that lets you restyle app icons with Material 3 Expressive shapes, themed icons and installed icon packs.</p>
+      <ul class="tags"><li class="tag">Android</li><li class="tag">Glance API</li></ul>
+      <div class="app-links">
+        <a href="privacy-anyicon.html" class="app-link">Privacy Policy</a>
+        <a href="terms-anyicon.html" class="app-link">Terms of Use</a>
+      </div>
+    </li>
+  </ul>
+</div>
+
+<script src="assets/home.js?v=3" defer></script>
+</body>
+</html>
